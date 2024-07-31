@@ -1,0 +1,127 @@
+.inputSignUp {
+    font-size: 30px;
+    width: auto;
+    height: auto;
+    /* margin-top: 120px; */
+    margin-top: 5%;
+    margin-left: 50%;
+  position: absolute;
+  flex-direction: column;
+display: flex;
+align-items:baseline;
+}
+.submitbutton{
+    margin: top -9px;
+    color: white;
+    background-color: rgb(250, 48, 3);
+    border-radius: 5px;
+    border-color: transparent;
+    width: 30px;
+    text-align: center;
+    margin-left: 50%;
+    width: 30%;
+    height: 60px;
+    cursor: pointer;
+}
+.submitbutton :hover {
+cursor: pointer;
+}
+.Loginbutton{
+    margin-bottom: 35px;
+    margin: top -9px;
+    color: white;
+    background-color: rgb(250, 48, 3);
+    border-radius: 5px;
+    border-color: transparent;
+    width: 30px;
+    text-align: center;
+    margin-left: 57%;
+    width: 13%;
+    height: 60px;
+    cursor: pointer;
+}
+.Loginbutton :hover{
+    cursor:pointer;
+}
+.forgetButton {
+   
+    /* background-color: "white"; */
+    color: orangered;
+    background: transparent;
+    background-color: transparent;
+    border: transparent;
+    margin:30px;
+    margin-bottom: 4%;
+    /* margin-top: 10px; */
+    cursor: pointer;
+
+}
+.forgetButton :hover{
+    cursor: pointer;
+    color: red;
+    box-shadow: inset;
+}
+
+/* .google {
+    display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  padding: 10px 15px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #3c4043;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+  .google:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-color: #c6c6c6;
+  } */
+   .buttons{
+    margin-top: -7%;
+    position: relative;
+   }
+.loginbuttons{
+    display: inline;
+    flex-direction: column;
+}
+
+  .google-button {
+
+    margin: 10px;
+    width: 30%;
+    height: 60px;
+    margin-left:50% ;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #3c4043;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    text-align: center;
+  }
+  
+  .google-button:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-color: #c6c6c6;
+  }
+  
+  .google-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .google-text {
+    font-weight: 500;
+  }
+  
