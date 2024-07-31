@@ -3,7 +3,7 @@ const cors = require("cors");
 const categoryRoute = require("./routes/CategoriesRoute.js");
 const productRoute = require("./routes/ProductRout.js");
 const userRoute = require("./routes/UserRout.js");
-const PORT = 3000;
+const PORT = 3001;
 const app = express();
 
 app.use(express.json());

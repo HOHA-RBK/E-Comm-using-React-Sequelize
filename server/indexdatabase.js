@@ -36,9 +36,10 @@ sequelize
 .catch((error)=>console.log("unable to connect to the database", error))
 
 sequelize
-.sync({force : true})
+.sync()
 .then(()=>{console.log("database and tables created successfully")})
 .catch((error)=>{console.log(error, "error sync")})
+// {force : true}
 
 
 module.exports = {
