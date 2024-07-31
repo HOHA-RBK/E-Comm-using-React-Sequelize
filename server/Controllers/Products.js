@@ -3,7 +3,7 @@ const {Product}=require('../indexdatabase.js')
 module.exports ={
      getAllProduct : async(req,res)=>{
         try{
-            const product=await Product.findAll()
+            const product=await Product.findAll({})
             res.status(200).send(product)
         }
         catch(err){
@@ -31,11 +31,14 @@ module.exports ={
     } ,
     updateProduct : async(req,res)=>{
         const { id } = req.params
-        const { name} = req.body
+        const { quantity, price} = req.body
+        
       
         try {
           const updated = await Product.update(
-            { name},
+            {quantity: quantity,
+                price: price
+            },
             { where: { id } }
           )
             res.status(200).send(updated);
