@@ -50,5 +50,6 @@ module.exports = {
     Image,
     Whishlist,
     Cart,
-    Category
+    Category,
+    Image
 }
