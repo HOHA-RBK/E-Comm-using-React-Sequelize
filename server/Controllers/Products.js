@@ -1,4 +1,4 @@
-const {Product}=require('../indexdatabase.js')
+const {Product, Image}=require('../indexdatabase.js')
 
 module.exports ={
      getAllProduct : async(req,res)=>{
@@ -11,6 +11,8 @@ module.exports ={
         }
     },
     addProduct : async(req,res)=>{
+      console.log("userId",req.body.userId)
+      console.log(req.body)
         try{
             const product = await Product.create(req.body)
             res.status(200).send(product)
@@ -58,6 +60,25 @@ module.exports ={
     catch(err){
         res.status(404).send(err)
     }
-   }
+   },
+
+   getProdAndImage : async (req, res) => {
+    const userId = req.params.userid;
+
+    try {
+        // Assuming Product is your Sequelize model
+        const products = await Product.findAll({ where: { userid: userId },include:{model:Image}});
+
+        if (products.length === 0) {
+            return res.status(404).json({ message: 'No products found for this user' });
+        }
+
+        res.status(200).json({ products });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error fetching products for user' });
+    }
+}
     
 }
+
