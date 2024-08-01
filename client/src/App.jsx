@@ -1,25 +1,33 @@
-import "./App.css";
-import Home from "./compoent/Home.jsx";
-import { BrowserRouter as Router , Route ,Routes, BrowserRouter } from "react-router-dom";
-import Navbar from "./compoent/Navbar.jsx";
-import Contact from "./compoent/Contact.jsx";
-import Signup from "./compoent/Signup.jsx";
-import About from "./compoent/About.jsx";
-import CatProd from "./compoent/CatProd.jsx";
 
-function App() {
-  return <>
-  <Router>
-    <Navbar/>
-    <Routes>
-    <Route path="/" exact Component={Home} />
-    <Route path="/about" exact Component={About} />
-    <Route path="/contact" exact Component={Contact} />
-    <Route path="/signup" exact Component={Signup} />
-    <Route path="/categoryproduct" exact Component={CatProd} />
-    </Routes>
-  </Router>
-  </>;
-}
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from './components/Dashboard.jsx';
+import Productlist from './components/Productlist.jsx';
+import Profilepage from './components/Profilepage.jsx';
+import Addproduct from './components/Addproduct.jsx';
+import "./App.css";
+import Signup from "./login & signup/Signup.jsx";
+import Login from "./login & signup/Login.jsx";
+import Test from "./login & signup/Test.jsx";
+import Admindashboard from "./components/adminDash/Admindashboard.jsx";
+
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/profile" element={<Profilepage />} />
+          <Route exact path="/products" element={<Productlist />} />
+          <Route exact path="/addproduct" element={<Addproduct />} />
+          <Route exact path="/test" element={<Test />} />
+          <Route exact path="/adminDash" element={<Admindashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+};
 
 export default App;
