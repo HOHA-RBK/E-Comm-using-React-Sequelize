@@ -15,9 +15,10 @@ const addImage = async (req, res)=>{
 
 const getImages= async (req, res)=> {
     try {
-        const {productid}=req.params
-        const images= await Image.findAll({where: {productId:productid}})
-        res.status(200).send(images)
+        const {productId}=req.params
+        const images= await Image.findAll({where: {productId:productId}})
+        res.status(200).send(images[0])
+        console.log(images,'gfh');
     }
     catch(error) {
         res.status(500).send(error)

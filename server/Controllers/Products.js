@@ -1,4 +1,5 @@
 const {Product}=require('../indexdatabase.js')
+const {Image} = require('../indexdatabase.js')
 
 module.exports ={
     getAllProduct : async(req,res)=>{
@@ -58,12 +59,35 @@ module.exports ={
    },
    getAllProductByCategories : async(req,res)=>{
     try{
-        const product=await Product.findAll({where :{categoryId:req.params.id}})
+        const product=await Product.findAll({where :{categoryId:req.params.id},include: [{
+            model: Image,
+            attributes: ['Url'],
+            where: { isFeatured: true }
+          }]})
         res.status(200).send(product)
     }
     catch(err){
         res.status(404).send(err)
     }
+},
+getProdAndImageByProductId : async (req, res) => {
+    const productId = req.params.productId;
+    console.log('idd=>',productId);
+
+    try {
+        const products = await Product.findAll({ where: { id: productId },include:{model:Image}});
+        console.log();
+
+        if (products.length === 0) {
+            return res.status(404).json({ message: 'No products found for this user' });
+        }
+
+        res.status(200).send( products );
+    } catch (err) {
+        console.error('this is the error',err);
+        res.status(500).json({ message: 'Error fetching products for user' });
+
 }
+   }
     
 }

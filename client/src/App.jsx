@@ -1,6 +1,7 @@
 
 
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './components/Dashboard.jsx';
 import Productlist from './components/Productlist.jsx';
@@ -34,12 +35,12 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/template" element={<Template />} />
           <Route exact path="/profile" element={<Profilepage />} />
-          <Route exact path="/products" element={<Productlist product={product} />} />
+          <Route exact path="/" element={<Productlist product={product} />} />
           <Route exact path="/addproduct" element={<Addproduct />} />
           <Route path='/oneproductdetails/:id' element={<ProductDetails/>} />
           <Route exact path="/test" element={<Test />} />
