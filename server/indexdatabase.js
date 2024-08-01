@@ -39,7 +39,6 @@ sequelize
 .sync()
 .then(()=>{console.log("database and tables created successfully")})
 .catch((error)=>{console.log(error, "error sync")})
-// {force : true}
 
 
 module.exports = {
@@ -50,6 +49,5 @@ module.exports = {
     Image,
     Whishlist,
     Cart,
-    Category,
-    Image
+    Category
 }
