@@ -15,6 +15,7 @@ import "./App.css";
 import Signup from "./login & signup/Signup.jsx";
 import Login from "./login & signup/Login.jsx";
 import Test from "./login & signup/Test.jsx";
+import Template from './components/Template.jsx';
 
 const App=() =>{
   return (
@@ -26,6 +27,11 @@ const App=() =>{
                         path="*"
                         element={<Dashboard />}
                     />
+                    <Route
+                        exact
+                        path="/"
+                        element={<Template />}
+                    />
 <Route
                         exact
                         path="*"
@@ -35,7 +41,7 @@ const App=() =>{
                 </Routes>
             </BrowserRouter>
     </div>
-  );
+  );}
 export default App;
 
   
