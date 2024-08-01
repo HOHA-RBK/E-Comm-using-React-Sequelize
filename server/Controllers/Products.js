@@ -1,9 +1,9 @@
 const {Product}=require('../indexdatabase.js')
 
 module.exports ={
-     getAllProduct : async(req,res)=>{
+    getAllProduct : async(req,res)=>{
         try{
-            const product=await Product.findAll({})
+            const product=await Product.findAll()
             res.status(200).send(product)
         }
         catch(err){
@@ -31,14 +31,11 @@ module.exports ={
     } ,
     updateProduct : async(req,res)=>{
         const { id } = req.params
-        const { quantity, price} = req.body
-        
+        const { name} = req.body
       
         try {
           const updated = await Product.update(
-            {quantity: quantity,
-                price: price
-            },
+            { name},
             { where: { id } }
           )
             res.status(200).send(updated);
@@ -58,6 +55,15 @@ module.exports ={
     catch(err){
         res.status(404).send(err)
     }
-   }
+   },
+   getAllProductByCategories : async(req,res)=>{
+    try{
+        const product=await Product.findAll({where :{categoryId:req.params.id}})
+        res.status(200).send(product)
+    }
+    catch(err){
+        res.status(404).send(err)
+    }
+}
     
 }

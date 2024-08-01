@@ -51,7 +51,17 @@ const updateCategory = async(req,res)=>{
           res.status(404).send(error);
         }
       };
+      const getOneCategory = async(req,res)=>{
+        try{
+          const getOne=await Category.findOne({ where: { name: req.params.name } })
+          res.status(200).send(getOne)
+        }
+        catch(err){
+          res.status(404).send(err)
+        }
+      }
       module.exports = {
+        getOneCategory,
         addCategory,
         getAllcategory,
         deleteCategory,
