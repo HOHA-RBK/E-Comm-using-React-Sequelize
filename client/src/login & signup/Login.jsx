@@ -14,7 +14,7 @@ const Login = () => {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/users/login', { telmail, password });
+            const response = await axios.post('http://localhost:3000/users/login', { telmail, password });
             const { token } = response.data;
             console.log(response.data);
             console.log("response.data passed from here");

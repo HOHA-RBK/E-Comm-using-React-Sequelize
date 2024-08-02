@@ -1,4 +1,5 @@
 const {Product}=require('../indexdatabase.js')
+const {Image}=require('../indexdatabase.js')
 
 module.exports ={
     getAllProduct : async(req,res)=>{
@@ -55,6 +56,27 @@ module.exports ={
     catch(err){
         res.status(404).send(err)
     }
+   },
+
+
+   getAllProdAndImages : async (req, res) => {
+
+
+    try {
+        
+        const products = await Product.findAll({include:{model:Image}});
+        
+
+        if (products.length === 0) {
+            return res.status(404).json({ message: 'No products found for this user' });
+        }
+
+        res.status(200).send( products );
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error fetching products for user' });   
+    
+}
    },
    getAllProductByCategories : async(req,res)=>{
     try{
