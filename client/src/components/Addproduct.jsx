@@ -50,36 +50,37 @@ export default function Addproduct() {
       });
   }, []);
 
-  // const handleUpload = function() {
-  //   // const user = localStorage.getItem("jwt Token");
-  //   // const decoded = jwtDecode(user);
-  //   // const id = decoded.userId;
+  const handleUpload = function() {
+    // const user = localStorage.getItem("jwt Token");
+    // const decoded = jwtDecode(user);
+    // const id = decoded.userId;
 
-  //   var data = {
-  //     name: name,
-  //     description: description,
-  //     quantity: quantity,
-  //     price: price,
-  //     // userId: id
-  //     category:categoryId
-  //   };
+    var data = {
+      name: name,
+      description: description,
+      quantity: quantity,
+      price: price,
+      // userId: id
+      category:categoryId,
+      userId:1
+    };
 
-  //   axios.post("http://127.0.0.1:3000/product/add", data)
-  //     .then(function(res) {
-  //       var idproduct = res.data.id;
-  //       previews.forEach(function(el) {
-  //         axios.post("http://127.0.0.1:3000/images/add", {
-  //           Url: el,
-  //           productId: idproduct
-  //         }).then(function() {
-  //           console.log("Product added successfully");
-  //         });
-  //       });
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // };
+    axios.post("http://127.0.0.1:3000/product/add", data)
+      .then(function(res) {
+        var idproduct = res.data.id;
+        previews.forEach(function(el) {
+          axios.post("http://127.0.0.1:3000/images/add", {
+            Url: el,
+            productId: idproduct
+          }).then(function() {
+            console.log("Product added successfully");
+          });
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
 
   return (
     <Box

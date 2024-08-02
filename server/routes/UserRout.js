@@ -1,10 +1,6 @@
 const express = require('express');
 const { loginUser,addUser, getAllUsers, getOneUser, deleteUser,updateUser } = require('../Controllers/user.js');
 const route=express.Router()
-require('../Controllers/user.js');
-
-
-
 
 
 route.get('/getAllUsers',getAllUsers);

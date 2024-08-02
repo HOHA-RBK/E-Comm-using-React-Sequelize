@@ -1,0 +1,20 @@
+.pror{
+    display: flex;
+    margin-left: 10px;
+
+}
+.faeye{
+   margin-top: 20px;
+   
+}
+
+.allpror{
+display: flex;
+justify-content: space-between;
+width: 90%;
+margin-left: 70px;
+}
+.prs{
+    color: red;
+    margin-left: 20px;
+}
