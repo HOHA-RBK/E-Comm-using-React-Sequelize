@@ -3,6 +3,7 @@ const {Category} = require("../indexdatabase.js")
 
 const addCategory = async(req, res) => {
     try {
+      console.log("body", req.body)
         const category = await Category.create(req.body)
          res.status(200).send(category)
     }

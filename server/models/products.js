@@ -18,6 +18,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         rating : {
             type: DataTypes.DECIMAL(2,1),
+
+            allowNull: true
+        },
+        color: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        userId: {
+            type:DataTypes.INTEGER,
+            allowNull:false
+
         }
     })
     return Product

@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ChevronLeft as ChevronLeftIcon,
   AddCircleOutline as AddCircleOutlineIcon,
   Person as PersonIcon,
   List as ListIcon,
+  Logout as LogoutIcon
 } from '@mui/icons-material';
 import {
   Box,
-  Divider,
   IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  styled,
+  styled
 } from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
-import { useMemo, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import Addproduct from "./Addproduct.jsx";
+import Addproduct from './Addproduct.jsx';
 import Productlist from './Productlist.jsx';
 import Profilepage from './Profilepage.jsx';
+import Home from './Home.jsx';
 
 const drawerWidth = 240;
+const closedDrawerWidth = 150;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -32,6 +33,7 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
+  backgroundColor: '#000000',
 });
 
 const closedMixin = (theme) => ({
@@ -40,16 +42,17 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: closedDrawerWidth,
+  backgroundColor: '#000000',
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: closedDrawerWidth,
   },
 });
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'flex-end',
+  justifyContent: 'flex-start',
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
@@ -72,54 +75,56 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const Sidelist = ({ open, setOpen }) => {
-  const [selectedLink, setSelectedLink] = useState('');
-
-  const list = useMemo(
-    () => [
-      {
-        title: 'Add a product',
-        icon: <AddCircleOutlineIcon />,
-        link: 'Addproduct',
-        component: <Addproduct {...{ setSelectedLink, link: 'Addproduct' }} />,
-      },
-      {
-        title: 'Product list',
-        icon: <ListIcon />,
-        link: 'Productlist',
-        component: <Productlist {...{ setSelectedLink, link: 'Productlist' }} />,
-      },
-      {
-        title: 'Profile page',
-        icon: <PersonIcon />,
-        link: 'Profilepage',
-        component: <Profilepage {...{ setSelectedLink, link: 'Profilepage' }} />,
-      },
-    ],
-    []
-  );
-
   const navigate = useNavigate();
 
+  const list = [
+    {
+      title: 'Add a product',
+      icon: <AddCircleOutlineIcon sx={{ fontSize: 50, color: 'white' }} />,
+      link: 'Addproduct',
+      component: <Addproduct />,
+    },
+    {
+      title: 'Product list',
+      icon: <ListIcon sx={{ fontSize: 50, color: 'white' }} />,
+      link: 'Productlist',
+      component: <Productlist />,
+    },
+    {
+      title: 'Profile page',
+      icon: <PersonIcon sx={{ fontSize: 50, color: 'white' }} />,
+      link: 'Profilepage',
+      component: <Profilepage />,
+    },
+    {
+      title: 'Log out',
+      icon: <LogoutIcon sx={{ fontSize: 50, color: 'white' }} />,
+      link: 'Home',
+      component: <Home />,
+    },
+  ];
+
   return (
-    <>
+    <Box sx={{ display: 'flex' }}>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={() => setOpen(false)}>
-            <ChevronLeftIcon />
+          <IconButton onClick={() => setOpen(!open)} sx={{ fontSize: 50, color: 'white' }}>
+            <ChevronLeftIcon fontSize="inherit" />
           </IconButton>
         </DrawerHeader>
-        <Divider />
         <List>
           {list.map((item) => (
-            <ListItem key={item.title} disablePadding sx={{ display: 'block' }}>
+            <ListItem key={item.title} disablePadding sx={{ display: 'block', mb: 4 }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  '&:hover': {
+                    bgcolor: '#555', // Background color on hover
+                  },
                 }}
                 onClick={() => navigate(item.link)}
-                selected={selectedLink === item.link}
               >
                 <ListItemIcon
                   sx={{
@@ -132,13 +137,21 @@ const Sidelist = ({ open, setOpen }) => {
                 </ListItemIcon>
                 <ListItemText
                   primary={item.title}
-                  sx={{ opacity: open ? 1 : 0 }}
+                  sx={{
+                    opacity: open ? 1 : 0,
+                    fontSize: open ? '1.25rem' : '1rem', // Adjust the font size here
+                    color: 'white',
+                    fontWeight: 'bold !important', // Force bold text
+                    ml: open ? 2 : 0, // Add margin to the left when open
+                    '& .MuiListItemText-primary': {
+                      fontWeight: 'bold !important', // Ensure the text is bold
+                    },
+                  }}
                 />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
@@ -148,7 +161,7 @@ const Sidelist = ({ open, setOpen }) => {
           ))}
         </Routes>
       </Box>
-    </>
+    </Box>
   );
 };
 
