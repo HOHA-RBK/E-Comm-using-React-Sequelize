@@ -13,6 +13,7 @@ const addImage = async (req, res)=>{
     }
 }
 
+
 const getImages= async (req, res)=> {
     try {
         const {productid}=req.params

@@ -11,6 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use("/images", imageRouter)
 app.use('/category',categoryRoute)
 app.use('/product',productRoute)
 app.use('/users',userRoute)

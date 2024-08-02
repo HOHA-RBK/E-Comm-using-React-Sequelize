@@ -1,7 +1,9 @@
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./compoent/Home.jsx"
+import Navbar from "./compoent/Navbar.jsx"
 import Dashboard from './components/Dashboard.jsx';
 import Productlist from './components/Productlist.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
@@ -12,9 +14,11 @@ import "./App.css";
 import Contact from "./compoent/Contact.jsx";
 import Signup from "./login & signup/Signup.jsx";
 import Login from "./login & signup/Login.jsx";
+import NotFound from './NotFound.jsx';
 import Test from "./login & signup/Test.jsx";
 import Template from './components/Template.jsx';
 import Admindashboard from "./components/adminDash/Admindashboard.jsx";
+import axios from 'axios';
 
 
 
@@ -31,9 +35,12 @@ const App = () => {
 
   return (
     <div>
+     
       <BrowserRouter>
+      <Navbar/>
         <Routes>
-          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/template" element={<Template />} />
@@ -43,7 +50,7 @@ const App = () => {
           <Route path='/oneproductdetails/:id' element={<ProductDetails/>} />
           <Route exact path="/test" element={<Test />} />
           <Route exact path="/adminDash" element={<Admindashboard />} />
-          <Route exact path="*" element={<Dashboard />} />
+          <Route exact path="seller" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
