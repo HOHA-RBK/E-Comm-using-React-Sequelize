@@ -4,7 +4,7 @@ import './Footer.css'
 function Footer() {
   return (
     <div  className='footes'>
-    <div>
+    <div className='ex'>
     <h1>Exclusive</h1>
         <h3>Subscribe</h3>
         <h6>Get 10 % off your first order</h6>

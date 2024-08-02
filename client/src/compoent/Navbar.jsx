@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {faUserCircle} from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 const NavBar = () => {
     const[One,SetOne]=useState([])
@@ -39,9 +40,9 @@ SetOne(data.data)
        {One? (<h1 className='ret'>{One.name}</h1>): (<h1>not found</h1>)}
 
        <FontAwesomeIcon icon={faSearch} className='fasearch' onClick={()=>{GetOne(name),console.log(One.data, "YOYO data")}}/>
-       <FontAwesomeIcon icon={faHeart} className='faheart'/>
+       <Link to="/wishlist"><FontAwesomeIcon icon={faHeart} className='faheart'/></Link>
        <FontAwesomeIcon icon={faShoppingCart} className='fashop'/>
-       
+      <Link to='/login'> <FontAwesomeIcon icon={faUserCircle} className='faper'/></Link>
       
        </div>
         
