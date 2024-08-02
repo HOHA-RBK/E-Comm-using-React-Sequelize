@@ -12,18 +12,19 @@ import Addproduct from './components/Addproduct.jsx';
 import About from "./compoent/About.jsx";
 import "./App.css";
 import Contact from "./compoent/Contact.jsx";
-import Signup from "./login & signup/Signup.jsx";
+import Signup from "./compoent/Signup.jsx";
+import About from "./compoent/About.jsx";
+import CatProd from "./compoent/CatProd.jsx";
+import Product from "./compoent/Product.jsx";
+import Wishlist from "./compoent/Wishlist.jsx";
 import Login from "./login & signup/Login.jsx";
 import NotFound from './NotFound.jsx';
 import Test from "./login & signup/Test.jsx";
 import Template from './components/Template.jsx';
 import Admindashboard from "./components/adminDash/Admindashboard.jsx";
 import axios from 'axios';
-
-
-
-const App = () => {
-// This part will be moved by Assil to the product compo
+function App() {
+  // This part will be moved by Assil to the product compo
   const[product,setProduct] = useState([])
     const handleAllProducts = async ()=>{
   axios.get('http://localhost:3000/product/get')
@@ -32,18 +33,21 @@ const App = () => {
     }
     useEffect(()=>{handleAllProducts()},[])
 //
-
-  return (
-    <div>
-     
-      <BrowserRouter>
-      <Navbar/>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/template" element={<Template />} />
+  return <>
+  <BrowserRouter>
+  <Router>
+    <Navbar/>
+    <Routes>
+    <Route path="/" exact Component={Home} />
+    <Route path="/about" exact Component={About} />
+    <Route path="/contact" exact Component={Contact} />
+    <Route path="/signup" exact Component={Signup} />
+    <Route path="/categoryproduct" exact Component={CatProd} />
+    <Route path="/login" exact Component={Login} />
+    <Route path="/allproduct" exact Component={Product} />
+    <Route path="/wishlist" exact Component={Wishlist} />
+    <Route path="*" element={<NotFound />} />
+    <Route exact path="/template" element={<Template />} />
           <Route exact path="/profile" element={<Profilepage />} />
           <Route exact path="/products" element={<Productlist product={product} />} />
           <Route exact path="/addproduct" element={<Addproduct />} />
@@ -51,11 +55,10 @@ const App = () => {
           <Route exact path="/test" element={<Test />} />
           <Route exact path="/adminDash" element={<Admindashboard />} />
           <Route exact path="seller" element={<Dashboard />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-};
-
+    </Routes>
+  </Router>
+  </BrowserRouter>
+  </>;
+}
 
 export default App;

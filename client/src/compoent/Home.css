@@ -101,4 +101,23 @@ display: flex;
    margin-top: 70px;
    margin-left: 20%;
    margin-bottom: 50px;
+   display: flex;
+   justify-content: space-between;
 }
+.fateel{
+    /* margin-left: 10%; */
+    margin: auto;
+    margin-top: 50px;
+}
+.fatel{
+    margin-left: 30%;
+    height:30px ;
+}
+.brow{
+    display: flex;
+    /* margin-left: -20%; */
+} 
+
+/* .h33{
+    margin-right: 75px;
+} */
