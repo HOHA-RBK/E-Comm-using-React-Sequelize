@@ -9,7 +9,9 @@ import Productlist from './components/Productlist.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
 import Profilepage from './components/Profilepage.jsx';
 import Addproduct from './components/Addproduct.jsx';
+import About from "./compoent/About.jsx";
 import "./App.css";
+import Contact from "./compoent/Contact.jsx";
 import Signup from "./login & signup/Signup.jsx";
 import Login from "./login & signup/Login.jsx";
 import NotFound from './NotFound.jsx';
@@ -17,8 +19,6 @@ import Test from "./login & signup/Test.jsx";
 import Template from './components/Template.jsx';
 import Admindashboard from "./components/adminDash/Admindashboard.jsx";
 import axios from 'axios';
-
-
 
 
 
@@ -32,7 +32,6 @@ const App = () => {
     }
     useEffect(()=>{handleAllProducts()},[])
 //
-
 
   return (
     <div>

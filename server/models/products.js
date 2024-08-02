@@ -21,9 +21,14 @@ module.exports = (sequelize, DataTypes) => {
 
             allowNull: true
         },
-       color: {
+        color: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        userId: {
+            type:DataTypes.INTEGER,
+            allowNull:false
+
         }
     })
     return Product

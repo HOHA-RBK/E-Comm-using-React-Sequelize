@@ -1,5 +1,4 @@
-const {Product}=require('../indexdatabase.js')
-const {Image}=require('../indexdatabase.js')
+const {Product, Image}=require('../indexdatabase.js')
 
 module.exports ={
     getAllProduct : async(req,res)=>{
@@ -12,6 +11,8 @@ module.exports ={
         }
     },
     addProduct : async(req,res)=>{
+      console.log("userId",req.body.userId)
+      console.log(req.body)
         try{
             const product = await Product.create(req.body)
             res.status(200).send(product)
@@ -32,11 +33,11 @@ module.exports ={
     } ,
     updateProduct : async(req,res)=>{
         const { id } = req.params
-        const { name} = req.body
+        const { quantity, price} = req.body
       
         try {
           const updated = await Product.update(
-            { name},
+            { price , quantity},
             { where: { id } }
           )
             res.status(200).send(updated);
@@ -59,12 +60,12 @@ module.exports ={
    },
 
 
-   getAllProdAndImages : async (req, res) => {
-
+   getProdAndImage : async (req, res) => {
+    const userid = req.params.userId;
 
     try {
-        
-        const products = await Product.findAll({include:{model:Image}});
+        // Assuming Product is your Sequelize model
+        const products = await Product.findAll({ where: { userId: userid },include:{model:Image}});
         
 
         if (products.length === 0) {
@@ -78,14 +79,14 @@ module.exports ={
     
 }
    },
-   getAllProductByCategories : async(req,res)=>{
+getAllProductByCategories : async(req,res)=>{
     try{
         const product=await Product.findAll({where :{categoryId:req.params.id}})
         res.status(200).send(product)
     }
     catch(err){
         res.status(404).send(err)
+
     }
-}
-    
-}
+}}
+
