@@ -9,6 +9,7 @@ import axios from 'axios';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from 'sweetalert2'
 
 
 const Productlist = () => {
@@ -23,8 +24,10 @@ const Productlist = () => {
   const [refresh, setRefresh]=useState(false)
   const [newrefresh, setNewrefresh]= useState(false)
 
+  
+
   useEffect(() => {
-    axios.get("http://localhost:3000/product/prodimage/1").then((res) => {
+    axios.get("http://localhost:3000/product/prodimage/3").then((res) => {
       const dataa = res.data;
       const newdata = dataa.map((el) => ({
         id: el.id,
@@ -75,14 +78,30 @@ const Productlist = () => {
     setEditDialogOpen(false);
   };
 
-  const deleteProduct = (rowId)=>{
-    console.log("rowid", rowId)
-    axios.delete(`http://localhost:3000/product/delete/${rowId}`).then(()=>{
-     setNewrefresh(!newrefresh)
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }
+  const deleteProduct = (rowId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3000/product/delete/${rowId}`).then(() => {
+          setNewrefresh(!newrefresh);
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your product has been deleted.",
+            icon: "success"
+          });
+        }).catch((error) => {
+          console.log(error);
+        });
+      }
+    });
+  };
   const columns = [
     { field: 'name', headerName: 'Name', width: 500 },
     {

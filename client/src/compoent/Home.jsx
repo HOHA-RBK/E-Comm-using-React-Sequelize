@@ -1,4 +1,3 @@
-
 import Footer from './Footer.jsx'
 
 import './Home.css'
@@ -15,7 +14,7 @@ import Image from './Image.jsx'
 import Product from './Product.jsx'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import  Carouset from './Carouset.jsx'
-function Home() {
+function Home({setId}) {
 
   return (
     <div>
@@ -67,7 +66,7 @@ function Home() {
    </div>
    <h1 className='h11'>Best Selling Product</h1>
    
-   <Product/>
+   <Product setId={setId}/>
    <img src={jbl} className='jbl'/>
    <div className='aaa'>
 
@@ -76,8 +75,8 @@ function Home() {
 
 </div>
 <h1 className='h11'>Explor Your Product's</h1>
-<Product/>
-<Product/>
+<Product setId={setId}/>
+<Product setId={setId}/>
 <button className='Loginbutt' type="submit"><Link to='/allproduct'>  View All Product</Link></button>
 <div className='aaa'>
 

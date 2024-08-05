@@ -2,10 +2,6 @@ const express = require('express');
 const { loginUser,addUser, getAllUsers, getOneUser, deleteUser,updateUser } = require('../Controllers/user.js');
 const route=express.Router()
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dc1349dfc1f3e8d8fded083d95979be0280c481f
 route.get('/getAllUsers',getAllUsers);
 route.post('/register',addUser);
 route.post('/login',loginUser)

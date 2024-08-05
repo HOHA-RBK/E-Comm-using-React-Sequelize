@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./Navbar.css"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +11,7 @@ import axios from 'axios';
 const NavBar = () => {
     const[One,SetOne]=useState([])
   const [name,setame]=useState('')
+  const navigate=useNavigate()
 const GetOne=(name)=>{
 axios.get(`http://localhost:3000/category/getOne/${name}`)
 .then((data)=>{
@@ -41,7 +43,7 @@ SetOne(data.data)
 
        <FontAwesomeIcon icon={faSearch} className='fasearch' onClick={()=>{GetOne(name),console.log(One.data, "YOYO data")}}/>
        <Link to="/wishlist"><FontAwesomeIcon icon={faHeart} className='faheart'/></Link>
-       <FontAwesomeIcon icon={faShoppingCart} className='fashop'/>
+       <FontAwesomeIcon icon={faShoppingCart} className='fashop' onClick={()=>{navigate("/Cart")}}/>
       <Link to='/login'> <FontAwesomeIcon icon={faUserCircle} className='faper'/></Link>
       
        </div>

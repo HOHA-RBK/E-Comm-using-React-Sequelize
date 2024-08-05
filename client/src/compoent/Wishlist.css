@@ -1,42 +1,72 @@
-.Loginbut{
-    margin-bottom: 35px;
-    /* margin: top -9px; */
-    color: rgb(0, 0, 0);
-    background-color: rgb(207, 206, 206);
-    border-radius: 3px;
-    border-color: transparent;
-    width: 5px;
-    text-align: center;
-    margin-left: 5%;
-    width: 200px;
-    height: 70px;
-    cursor: pointer;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-font-size: large;
+/* Wishlist.css */
+
+.Loginbut {
+  margin-bottom: 35px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(207, 206, 206);
+  border-radius: 3px;
+  border-color: transparent;
+  width: 200px;
+  height: 70px;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
 }
-.Loginbut :hover{
-    cursor:pointer;
+
+.Loginbut:hover {
+  cursor: pointer;
 }
-.firs{
-    display: flex;
-    justify-content: space-between;
+
+.firs {
+  display: flex;
+  justify-content: space-between;
 }
-.Loginbutton{
-    margin-bottom: 35px;
-    /* margin: top -9px; */
-    color: rgb(0, 0, 0);
-    background-color: rgb(250, 48, 3);
-    border-radius: 3px;
-    border-color: transparent;
-    width: 5px;
-    text-align: center;
-    margin-left: 5%;
-    width: 3px;
-    height: 50px;
-    cursor: pointer;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-font-size: large;
+
+.Loginbutton {
+  margin-bottom: 35px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(250, 48, 3);
+  border-radius: 3px;
+  border-color: transparent;
+  width: 3px;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
 }
-.Loginbutton :hover{
-    cursor:pointer;
+
+.Loginbutton:hover {
+  cursor: pointer;
+}
+
+.allpror {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-left: 70px;
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+.delete-btn .fa-trash {
+  margin-right: 5px;
 }

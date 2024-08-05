@@ -21,7 +21,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Addproduct from './Addproduct.jsx';
 import Productlist from './Productlist.jsx';
 import Profilepage from './Profilepage.jsx';
-import Home from './Home.jsx';
+import Home from '../compoent/Home.jsx'
 
 const drawerWidth = 240;
 const closedDrawerWidth = 150;

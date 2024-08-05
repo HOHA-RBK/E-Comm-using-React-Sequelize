@@ -39,9 +39,41 @@ const getCartforUser = async (req, res) => {
     }
 }
 
+const deleteFromCart = async(req, res)=>{
+    const idcart = req.params.id
+    try {
+        const deleted = Cart.destroy({where: {id:idcart}})
+        res.status(200).send(deleted)
+    }  
+    catch(error) {
+        res.status(500).send(error)
+    }
+}
+
+const updateQuantity = async (req, res) => {
+    const { id } = req.params
+    const { quantity} = req.body
+  
+    try {
+      const updated = await Cart.update(
+        { quantity},
+        { where: { id } }
+      )
+        res.status(200).send(updated);
+     
+    } 
+    catch (error) {
+      console.error(error);
+      res.status(404).send(error);
+    }
+}
+
+
 module.exports = {
     addCart,
     getAllCart,
-    getCartforUser
+    getCartforUser, 
+    deleteFromCart,
+    updateQuantity
 
 }

@@ -62,7 +62,7 @@ export default function Addproduct() {
       price: price,
       // userId: id
       category:categoryId,
-      userId:1
+      userId:3
     };
 
     axios.post("http://127.0.0.1:3000/product/add", data)

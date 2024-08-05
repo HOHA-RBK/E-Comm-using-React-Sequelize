@@ -10,6 +10,7 @@ import { AppBar, Box, CssBaseline, Toolbar, Typography, IconButton, Tab, Tabs, T
     Button, 
     TextField 
 } from '@mui/material';
+import './Admin.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -232,7 +233,7 @@ console.log(allProducts)
                                                 <TableCell>{product.id}</TableCell>
                                                 <TableCell>{product.name}</TableCell>
                                                 <TableCell>{product.description}</TableCell>
-                                                <TableCell>{product.images}</TableCell>
+                                                <TableCell><img src ={product.images[0].Url} className='imgg'/></TableCell>
                                                 <TableCell>
                                                     <Button 
                                                         variant="contained"  
