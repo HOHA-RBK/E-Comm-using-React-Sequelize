@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import "./sign.css";
 import TextField from '@mui/material/TextField';
 import phone from "../assets/phonePic.png";
-import {jwtDecode} from 'jwt-decode'
+import {jwtDecode} from 'jwt-decode';
 
 const Login = () => {
-    
     const [telmail, setTelMail] = useState('');
     const [password, setPassword] = useState('');
     const [userInfo, setUserInfo] = useState(null);
-
+    
+    const navigate = useNavigate();
     const handleLogin = async (event) => {
         event.preventDefault();
+        if (!telmail || !password) {
+            alert('Please fill in all fields');
+            return;
+        }
         try {
             const response = await axios.post('http://localhost:3000/users/login', { telmail, password });
             const { token } = response.data;
-            console.log(response.data);
-            console.log("response.data passed from here");
             localStorage.setItem('jwtToken', token);
-            
-
-            
             const decodedToken = jwtDecode(token);
             setUserInfo(decodedToken);
-
             console.log('Login successful', decodedToken);
+            navigate('/'); // Navigate to home page
         } catch (error) {
             console.error('Error logging in:', error);
         }
     };
-
-    console.log(telmail);
-    console.log(password);
-    console.log(userInfo);
 
     return (
         <div style={{ display: "grid" }}>
@@ -60,7 +56,7 @@ const Login = () => {
                         />
                     </div>
                     <div className='loginbuttons'>
-                        <button className='Loginbutton' type="submit">Log in</button>
+                        <button className='Loginbuttonn' type="submit">Log in</button>
                         <button className='forgetButton' type="button">Forget Password?</button>
                     </div>
                 </div>
