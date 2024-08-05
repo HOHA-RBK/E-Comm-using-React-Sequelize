@@ -1,0 +1,69 @@
+.product-details {
+    display: flex;
+    height: 80vh; /* Adjust height as needed */
+    width: 80vw; /* Adjust width as needed */
+    align-items: center;
+    justify-content: space-around; /* Distribute space evenly */
+    margin: auto; /* Center the product-details div */
+    background-color: #f9f9f9; /* Optional: Add background color for better visibility */
+    padding: 20px; /* Optional: Add padding for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual separation */
+    border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.secondary-images-container {
+    flex: 0 0 30%; /* Width 30%, doesn't grow or shrink */
+    display: flex;
+    flex-direction: column; /* Vertical alignment */
+    justify-content: center; /* Center content vertically */
+    margin-left: 20px; /* Adjust the value to move container to the right */
+    background-color: transparent;
+}
+
+.secondary-images-container img {
+    width: 120px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    margin-bottom: 10px; /* Space between images */
+}
+
+.secondary-images-container img.active {
+    border-color: #000;
+}
+
+.main-image-container {
+    flex: 0 0 40%; /* Width 40%, doesn't grow or shrink */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center image both horizontally and vertically */
+    overflow: hidden; /* Ensure image does not overflow its container */
+}
+
+.main-image-container img {
+    width: 100%; /* Image takes up full width of container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure image does not exceed container's width */
+    object-fit: contain; /* Scale image to fit container */
+}
+
+.product-info-container {
+    flex: 0 0 30%; /* Width 30%, doesn't grow or shrink */
+    display: flex;
+    flex-direction: column; /* Vertical alignment */
+    justify-content: center; /* Center content vertically */
+    padding-left: 20px; /* Adjust position as needed */
+}
+
+.product-info-container h1 {
+    margin: 0;
+}
+
+.product-info-container .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e60023;
+}
+
+.product-info-container .buy-buttons button {
+    margin-right: 10px;
+}

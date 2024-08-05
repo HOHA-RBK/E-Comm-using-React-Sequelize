@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import "./sign.css"
+import "./sign.css";
 import TextField from '@mui/material/TextField';
-import phone from "../assets/phonePic.png"
+import phone from "../assets/phonePic.png";
+import Footer from '../compoent/Footer';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -10,40 +12,51 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [menu, setMenu] = useState(false);
+  const navigate = useNavigate();
 
   const handleRole = (e) => {
     setRole(e.target.value);
   };
 
-  const handlemenu = () => {
+  const handleMenu = () => {
     setMenu(true);
   };
 
   useEffect(() => {
     if (password) {
-      handlemenu();
+      handleMenu();
     }
   }, [password]);
 
   const handleSignUp = (e) => {
     e.preventDefault();
 
-  
+    if (!name || !telmail || !password) {
+      return;
+    }
+
     let userRole = role;
     if (telmail.includes('admin-') && password.includes('+216')) {
-      userRole = "admin";
+      userRole = 'admin';
     }
 
     const user = {
-      name: name,
-      telmail: telmail,
-      password: password,
+      name,
+      telmail,
+      password,
       role: userRole,
     };
 
-    axios.post('http://localhost:3000/users/register/', user)
+    axios.post('http://localhost:3000/users/register', user)
       .then((response) => {
         console.log(response);
+        if (userRole === 'admin') {
+          navigate('/adminDash');
+        } else if (userRole === 'Seller') {
+          navigate('/seller');
+        } else {
+          navigate('/');
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -66,21 +79,24 @@ const Signup = () => {
           </div>
         </div>
         <div className='buttons'>
-          <button className='submitbutton' type="submit">Create Account</button>
+          <button className='submitbuttonn' type="submit">Create Account</button>
           <button className="google-button">
             <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" className="google-logo" />
             <span className="google-text">Sign in with Google</span>
           </button>
+          <div className='already'><p>Already have an accounnt?</p>  <p style={{cursor:"pointer"}} onClick={()=>navigate('/login')}>Log in</p></div>
         </div>
         <div className='roleOption'>
-          {menu ? (
+          {menu && (
             <select name="role" id="role" onChange={handleRole}>
               <option value="Customer">Customer</option>
               <option value="Seller">Seller</option>
             </select>
-          ) : (<></>)}
+          )}
         </div>
+        <br /><br /><br />
       </form>
+      <Footer/>
     </div>
   );
 };

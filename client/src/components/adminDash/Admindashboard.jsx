@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { AppBar, Box, CssBaseline, Toolbar, Typography, IconButton, Tab, Tabs, Table, 
-    TableBody, 
-    TableCell, 
-    TableContainer, 
-    TableHead, 
-    TableRow, 
-    Paper, 
-    Button, 
-    TextField 
+import {
+    AppBar, Box, CssBaseline, Toolbar, Typography, IconButton, Tab, Tabs, Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    Button,
+    TextField
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import axios from 'axios';
@@ -20,7 +21,7 @@ export default function AdminDashboard() {
     const [allCategories, setAllCategories] = useState([]);
     const [tabIndex, setTabIndex] = useState(0);
     const [newCategory, setNewCategory] = useState("");
-    const [fieldcategory,setFieldCategory] = useState("")
+    const [fieldCategory, setFieldCategory] = useState("");
 
     const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ export default function AdminDashboard() {
             .then(response => setAllProducts(response.data))
             .catch(error => console.error(error));
     }, []);
-console.log(allProducts)
+
     useEffect(() => {
         axios.get('http://localhost:3000/category/get')
             .then(response => setAllCategories(response.data))
@@ -55,7 +56,7 @@ console.log(allProducts)
             .then(response => {
                 setAllUsers(prev => prev.map(user => user.id === userId ? { ...user, role: newRole } : user));
             })
-            .catch(error => console.error( error));
+            .catch(error => console.error(error));
     };
 
     const updateCategory = (categoryId, newCategory) => {
@@ -69,21 +70,20 @@ console.log(allProducts)
     const handleTabChange = (event, newValue) => {
         setTabIndex(newValue);
     };
-    console.log(fieldcategory,"fieldcat log")
-    const addCategory =()=>{
-        let x = fieldcategory
-        
-        axios.post("http://localhost:3000/category/add",{name:x})
-        .then((response)=>console.log(response))
-        .catch(error=>console.log(error))
-    }
-  
+
+    const addCategory = () => {
+        let x = fieldCategory;
+
+        axios.post("http://localhost:3000/category/add", { name: x })
+            .then((response) => console.log(response))
+            .catch(error => console.log(error));
+    };
 
     const handleLogout = () => {
         localStorage.removeItem('jwtToken');
-        navigate('/login')
+        navigate('/login');
     };
-    console.log(fieldcategory)   
+
     return (
         <div>
             <CssBaseline />
@@ -115,20 +115,19 @@ console.log(allProducts)
                     </Tabs>
                     {tabIndex === 0 && (
                         <Box sx={{ mt: 2 }}>
-                            <TextField  onChange={(e)=>setFieldCategory(e.target.value)} ></TextField>
-                            <button style={{borderColor:"transparent", cursor:"pointer", 
-                                backgroundColor : "green", borderRadius : "15px" , height:"55px", width:"auto"
-                            }} onClick={()=>{console.log(addCategory())}}>add New Category</button>
+                            <TextField onChange={(e) => setFieldCategory(e.target.value)} />
+                            <button style={{
+                                borderColor: "transparent", cursor: "pointer",
+                                backgroundColor: "green", borderRadius: "15px", height: "55px", width: "auto"
+                            }} onClick={() => { console.log(addCategory()) }}>Add New Category</button>
                             <Typography variant="h4" gutterBottom>Categories</Typography>
                             <TableContainer component={Paper}>
-                            
                                 <Table>
-                                    
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>ID</TableCell>
                                             <TableCell>Name</TableCell>
-        
+                                            <TableCell>Actions</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -136,7 +135,7 @@ console.log(allProducts)
                                             <TableRow key={category.id}>
                                                 <TableCell>{category.id}</TableCell>
                                                 <TableCell>
-                                                    <TextField 
+                                                    <TextField
                                                         defaultValue={category.name}
                                                         onChange={(e) => setNewCategory(e.target.value)}
                                                         variant="outlined"
@@ -145,17 +144,17 @@ console.log(allProducts)
                                                     />
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Button 
-                                                        variant="contained" 
-                                                        color="primary" 
+                                                    <Button
+                                                        variant="contained"
+                                                        color="primary"
                                                         onClick={() => updateCategory(category.id, newCategory)}
                                                         sx={{ mr: 1 }}
                                                     >
                                                         Update
                                                     </Button>
-                                                    <Button 
-                                                        variant="contained" 
-                                                        color="secondary" 
+                                                    <Button
+                                                        variant="contained"
+                                                        color="secondary"
                                                         onClick={() => deleteItem(category.id, 'category', setAllCategories)}
                                                     >
                                                         Delete
@@ -181,24 +180,24 @@ console.log(allProducts)
                                             <TableCell>Actions</TableCell>
                                         </TableRow>
                                     </TableHead>
-                                    <TableBody> 
+                                    <TableBody>
                                         {allUsers.map(user => (
                                             <TableRow key={user.id}>
                                                 <TableCell>{user.id}</TableCell>
                                                 <TableCell>{user.name}</TableCell>
                                                 <TableCell>{user.role}</TableCell>
                                                 <TableCell>
-                                                    <Button 
-                                                        variant="contained" 
-                                                        color="primary" 
+                                                    <Button
+                                                        variant="contained"
+                                                        color="primary"
                                                         onClick={() => updateUserRole(user.id, user.role === 'buyer' ? 'seller' : 'buyer')}
                                                         sx={{ mr: 1 }}
                                                     >
-                                                        {user.role === 'buyer' ? 'Make Seller' : 'Make buyer'}
+                                                        {user.role === 'buyer' ? 'Make Seller' : 'Make Buyer'}
                                                     </Button>
-                                                    <Button 
-                                                        variant="contained" 
-                                                        color="secondary" 
+                                                    <Button
+                                                        variant="contained"
+                                                        color="secondary"
                                                         onClick={() => deleteItem(user.id, 'users', setAllUsers)}
                                                     >
                                                         Delete
@@ -220,10 +219,9 @@ console.log(allProducts)
                                         <TableRow>
                                             <TableCell>ID</TableCell>
                                             <TableCell>Name</TableCell>
-                                            <TableCell>description</TableCell>
-                                            <TableCell>images</TableCell>
+                                            <TableCell>Description</TableCell>
+                                            <TableCell>Images</TableCell>
                                             <TableCell>Actions</TableCell>
-                                           
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -232,11 +230,15 @@ console.log(allProducts)
                                                 <TableCell>{product.id}</TableCell>
                                                 <TableCell>{product.name}</TableCell>
                                                 <TableCell>{product.description}</TableCell>
-                                                <TableCell>{product.images}</TableCell>
                                                 <TableCell>
-                                                    <Button 
-                                                        variant="contained"  
-                                                        color="secondary" 
+                                                    {product.images.map((img, index) => (
+                                                        <img key={index} src={img.Url} alt={`Product ${index}`} style={{ width: '50px', height: '50px', marginRight: '5px' }} />
+                                                    ))}
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Button
+                                                        variant="contained"
+                                                        color="secondary"
                                                         onClick={() => deleteItem(product.id, 'product', setAllProducts)}
                                                     >
                                                         Delete

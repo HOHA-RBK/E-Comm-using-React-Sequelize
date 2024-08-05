@@ -61,7 +61,9 @@ export default function Addproduct() {
       quantity: quantity,
       price: price,
       // userId: id
-      category:categoryId,
+      rating : null,
+      color : null,
+      categoryId:categoryId,
       userId:1
     };
 
@@ -73,7 +75,7 @@ export default function Addproduct() {
             Url: el,
             productId: idproduct
           }).then(function() {
-            console.log("Product added successfully");
+            console.log(data,"Product added successfully");
           });
         });
       })

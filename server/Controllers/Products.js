@@ -79,6 +79,27 @@ module.exports ={
     
 }
    },
+
+   getAllProdAndImages : async (req, res) => {
+    
+
+    try {
+       
+        const products = await Product.findAll({include:{model:Image}});
+        
+
+        if (products.length === 0) {
+            return res.status(404).json({ message: 'No products found for this user' });
+        }
+
+        res.status(200).send( products );
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error fetching products for user' });   
+    
+}
+   },
+   
 getAllProductByCategories : async(req,res)=>{
     try{
         const product=await Product.findAll({where :{categoryId:req.params.id}})

@@ -24,17 +24,66 @@ display: flex;
 .Loginbutton{
     margin-bottom: 35px;
     /* margin: top -9px; */
-    color: white;
+    /* color: white; */
     background-color: rgb(250, 48, 3);
     border-radius: 5px;
     border-color: transparent;
     width: 3px;
+
     text-align: center;
     margin-left: 5%;
     width: 3px;
     height: 50px;
     cursor: pointer;
 }
+.breadcrumb .home-text {
+    color: grey; 
+  }
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  .breadcrumb {
+    font-size: 18px;
+    color: #999; 
+    margin-bottom: 10px; 
+  }
+  .not-found-Main {
+    padding: 20px;
+    position: relative;
+  }
+  .not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .breadcrumb .home-text {
+    color: grey;
+  }
+  .not-found-container h1 {
+    margin-top: 0;
+  }
+  .p404 {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .p404 {
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: orangered;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
 .Loginbutton :hover{
     cursor:pointer;
 }
@@ -49,7 +98,7 @@ display: flex;
 .Loginbutto{
     margin-bottom: 35px;
     /* margin: top -9px; */
-    color: white;
+    
     background-color: rgb(250, 48, 3);
     border-radius: 5px;
     border-color: transparent;

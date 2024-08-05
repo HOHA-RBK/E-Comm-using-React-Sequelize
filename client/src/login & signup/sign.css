@@ -10,7 +10,7 @@
 display: flex;
 align-items:baseline;
 }
-.submitbutton{
+.submitbuttonn{
     margin: top -9px;
     color: white;
     background-color: rgb(250, 48, 3);
@@ -26,7 +26,20 @@ align-items:baseline;
 .submitbutton :hover {
 cursor: pointer;
 }
-.Loginbutton{
+
+.already {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 250px;
+}
+
+.already p {
+  margin: 05px;
+}
+
+.Loginbuttonn{
     margin-bottom: 35px;
     margin: top -9px;
     color: white;
@@ -40,7 +53,7 @@ cursor: pointer;
     height: 60px;
     cursor: pointer;
 }
-.Loginbutton :hover{
+.Loginbuttonn :hover{
     cursor:pointer;
 }
 .forgetButton {
